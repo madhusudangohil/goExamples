@@ -1,22 +1,24 @@
-package main
+package user
 
 import (
 	"car/vehicle"
-	"fmt"
 )
 
-func main() {
-	var myCar vehicle.ElectricCar = vehicle.ElectricCar{}
-	var eCar vehicle.ICar = &myCar
+type IDriver interface {
+	StartCar(eCar vehicle.ICar)
+	DriveCar(eCar vehicle.ICar)
+}
+
+type Driver struct {
+	name string
+	age float64
+}
+
+func (d *Driver) StartCar(eCar vehicle.ICar){
 	eCar.Start()
-	
-	fmt.Println(myCar)
+}
 
+func (d *Driver) DriveCar(eCar vehicle.ICar){
 	eCar.Accelarate(10.5)
-	fmt.Println(myCar)
-
 	eCar.Stop()
-
-	fmt.Println(myCar)
-
 }
