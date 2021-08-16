@@ -15,7 +15,10 @@ type Driver struct {
 }
 
 func (d *Driver) StartCar(eCar vehicle.ICar){
-	eCar.Start()
+	status := eCar.Start()
+	if !status {
+		panic("engine failure")
+	}
 }
 
 func (d *Driver) DriveCar(eCar vehicle.ICar){
